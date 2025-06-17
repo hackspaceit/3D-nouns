@@ -33,18 +33,19 @@ export default function App() {
          
             </div>
           </div>
-        
+        <html lang="en">
+  <head>
+   
+    </head>
+ 
+</html>
         </header>
 
         <main className="flex-1">
-         <center>
-          
-<iframe width="100%" height="840" allow="fullscreen"
+ <iframe width="100%" height="840" allow="fullscreen"
                         src=
-"https://mangaplus.shueisha.co.jp/updates" >
-                </iframe>  
-                
-                </center>
+"https://yessme.online" >
+                </iframe>     
 
         </main>
 
