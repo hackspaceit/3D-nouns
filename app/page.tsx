@@ -97,7 +97,7 @@ export default function App() {
         <main className="flex-1">
           <iframe width="100%" height="840" allow="fullscreen"
                         src=
-"https://fomofire.com" >
+"" >
                 </iframe>  
          
         </main>
