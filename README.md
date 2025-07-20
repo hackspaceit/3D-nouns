@@ -1,51 +1,112 @@
-# Celo Farcaster MiniApps
+# MiniKit Template
 
-This repository serves as a mono-repo for all Farcaster V2 frames for Celo.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
 
-## How to contribute
+- [MiniKit](https://docs.base.org/builderkits/minikit/overview)
+- [OnchainKit](https://www.base.org/builders/onchainkit)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Next.js](https://nextjs.org/docs)
 
-1. **Fork this repository**  
-   - Click the "Fork" button at the top right of this repository page to create a copy of the repository under your own GitHub account.
+## Getting Started
 
-2. **Clone your forked repository**  
-   - Open your terminal or command prompt.
-   - Run the following command to clone the repository to your local machine:
-     ```bash
-     git clone https://github.com/your-username/celo-farcaster-frames.git
-     ```
-   - Replace `your-username` with your GitHub username.
+1. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
 
-3. **Add your code**  
-   - Navigate into the cloned repository:
-     ```bash
-     cd celo-farcaster-frames
-     ```
-   - Add your Farcaster MiniApp code to the appropriate directory or create a new one if necessary.
+2. Verify environment variables, these will be set up by the `npx create-onchain --mini` command:
 
-4. **Commit your changes**  
-   - Stage your changes:
-     ```bash
-     git add .
-     ```
-   - Commit your changes with a descriptive message:
-     ```bash
-     git commit -m "Add new Farcaster V2 frame for Celo"
-     ```
+You can regenerate the FARCASTER Account Association environment variables by running `npx create-onchain --manifest` in your project directory.
 
-5. **Push your changes to GitHub**  
-   - Push your changes to your forked repository:
-     ```bash
-     git push origin main
-     ```
+The environment variables enable the following features:
 
-6. **Create a Pull Request**  
-   - Go to the original repository on GitHub.
-   - Click on the "Pull Requests" tab, then click "New Pull Request".
-   - Select "compare across forks" if necessary.
-   - Choose your forked repository and branch as the compare branch.
-   - Provide a clear and descriptive title and description for your pull request, explaining what changes you made and why.
+- Frame metadata - Sets up the Frame Embed that will be shown when you cast your frame
+- Account association - Allows users to add your frame to their account, enables notifications
+- Redis API keys - Enable Webhooks and background notifications for your application by storing users notification details
 
-7. **Wait for review**  
-   - The repository maintainers will review your pull request. They may request changes or approve it.
+```bash
+# Shared/OnchainKit variables
+NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME=
+NEXT_PUBLIC_URL=
+NEXT_PUBLIC_ICON_URL=
+NEXT_PUBLIC_ONCHAINKIT_API_KEY=
 
-By following these steps, you can easily share your Farcaster MiniApps with the Celo community. Thank you for your contributions!
+# Frame metadata
+FARCASTER_HEADER=
+FARCASTER_PAYLOAD=
+FARCASTER_SIGNATURE=
+NEXT_PUBLIC_APP_ICON=
+NEXT_PUBLIC_APP_SUBTITLE=
+NEXT_PUBLIC_APP_DESCRIPTION=
+NEXT_PUBLIC_APP_SPLASH_IMAGE=
+NEXT_PUBLIC_SPLASH_BACKGROUND_COLOR=
+NEXT_PUBLIC_APP_PRIMARY_CATEGORY=
+NEXT_PUBLIC_APP_HERO_IMAGE=
+NEXT_PUBLIC_APP_TAGLINE=
+NEXT_PUBLIC_APP_OG_TITLE=
+NEXT_PUBLIC_APP_OG_DESCRIPTION=
+NEXT_PUBLIC_APP_OG_IMAGE=
+
+# Redis config
+REDIS_URL=
+REDIS_TOKEN=
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+## Template Features
+
+### Frame Configuration
+- `.well-known/farcaster.json` endpoint configured for Frame metadata and account association
+- Frame metadata automatically added to page headers in `layout.tsx`
+
+### Background Notifications
+- Redis-backed notification system using Upstash
+- Ready-to-use notification endpoints in `api/notify` and `api/webhook`
+- Notification client utilities in `lib/notification-client.ts`
+
+### Theming
+- Custom theme defined in `theme.css` with OnchainKit variables
+- Pixel font integration with Pixelify Sans
+- Dark/light mode support through OnchainKit
+
+### MiniKit Provider
+The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
+- OnchainKit integration
+- Access to Frames context
+- Sets up Wagmi Connectors
+- Sets up Frame SDK listeners
+- Applies Safe Area Insets
+
+## Customization
+
+To get started building your own frame, follow these steps:
+
+1. Remove the DemoComponents:
+   - Delete `components/DemoComponents.tsx`
+   - Remove demo-related imports from `page.tsx`
+
+2. Start building your Frame:
+   - Modify `page.tsx` to create your Frame UI
+   - Update theme variables in `theme.css`
+   - Adjust MiniKit configuration in `providers.tsx`
+
+3. Add your frame to your account:
+   - Cast your frame to see it in action
+   - Share your frame with others to start building your community
+
+## Learn More
+
+- [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
+- [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
